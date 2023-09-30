@@ -1,18 +1,16 @@
 import "./App.css"
-import { useMovies } from "./hocks/useMovies"
 import { Movie } from "./components/Movie"
-import { useEffect, useRef, useState } from "react"
 import { useSearch } from "./hocks/useSearch"
-
-
+import { useMovies } from "./hocks/useMovies";
 
 function App(){
-    const movies = useMovies()
-    const {error, search, setSearch} = useSearch()
-    
+    const { error, search, setSearch } = useSearch();
+    const { movies, getMovies } = useMovies({ search });
 
+    
     const handleSubmit = (event) =>{
         event.preventDefault()
+        getMovies()
     }
 
     const handleChange = (event) => {

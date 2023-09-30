@@ -1,7 +1,20 @@
-import responseMovies from "../mocks/results.json";
-import withoutResults from "../mocks/no-results.json";
+import { fetchMovies } from "../services/fetchMovies";
+import { useState, useRef } from "react";
 
-export function useMovies() {
-  const movies = responseMovies.Search;
-  return movies;
+export function useMovies({search}) {
+  const [movies, setMovies] = useState(null)
+  const lastSearch = useRef("");
+  
+  const getMovies = () =>{
+    if (search){
+      if(lastSearch.current != search){
+        fetchMovies({ search, setMovies });
+        lastSearch.current = search
+      }else{
+        alert("Evita la misma busqueda")
+      }
+    }
+  }
+
+  return {movies, getMovies};
 }
