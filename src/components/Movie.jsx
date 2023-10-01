@@ -13,7 +13,7 @@ function ListOfMovies({movies}){
 }
 
 function NoResults(){
-    return <p>No se encontraron resultados</p>
+    return <p className="noResults">No se encontraron resultados</p>
 }
 
 export function Movie({movies}){

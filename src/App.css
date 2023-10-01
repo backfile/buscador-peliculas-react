@@ -98,3 +98,7 @@ li{
 .error{
     color: red;
 }
+
+.noResults{
+    color: white;
+}
