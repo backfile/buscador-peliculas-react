@@ -41,7 +41,7 @@ function App(){
           <h1 className="pageTitle">Buscador de peliculas</h1>
           <form action="" onSubmit={handleSubmit}>
             <input
-            placeholder="Avengers, Matrix..."
+            placeholder="Avengers, Matrix"
               className="input"
               style={{
                 border: "solid 3px transparent",
