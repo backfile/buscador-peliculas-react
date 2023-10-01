@@ -1,26 +1,20 @@
 import { fetchMovies } from "../services/fetchMovies";
-import { useState, useRef, useMemo, useEffect} from "react";
+import { useState, useRef, useMemo, useEffect, useCallback} from "react";
 
 export function useMovies({search, sort}) {
   const [movies, setMovies] = useState(null)
   const lastSearch = useRef("");
   
-  const getMovies = useMemo(() => {
-    return ({search}) => {
+  const getMovies = useCallback(({search}) => {
       if (search) {
         if (lastSearch.current != search) {
           fetchMovies({ search, setMovies, sort });
           lastSearch.current = search;
         } else {
-          alert("Evita la misma busqueda");
+          return
         }
       }
-    };
-  }, []); 
-
-  useEffect(()=>{
-    console.log("getMovies")
-  }, [getMovies])
+    }, []);
 
   const getSortedMovies = useMemo(()=>{
     const sortedMovies = sort
