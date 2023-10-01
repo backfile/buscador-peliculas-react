@@ -6,7 +6,7 @@ export function useMovies({search, sort}) {
   const lastSearch = useRef("");
   
   const getMovies = useMemo(() => {
-    return () => {
+    return ({search}) => {
       if (search) {
         if (lastSearch.current != search) {
           fetchMovies({ search, setMovies, sort });
@@ -16,7 +16,7 @@ export function useMovies({search, sort}) {
         }
       }
     };
-  }, [search]); 
+  }, []); 
 
   useEffect(()=>{
     console.log("getMovies")
